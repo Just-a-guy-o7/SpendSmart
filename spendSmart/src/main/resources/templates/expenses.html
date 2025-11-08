@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendSmart - Expenses</title>
+    <link rel="stylesheet" href="styles-expenses.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="dashboard-header">
+            <h1>💰 SpendSmart</h1>
+            <p>Welcome, <span id="userName">User</span>!</p>
+            <button class="btn btn-small btn-secondary" onclick="logout()">Logout</button>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <h2>All Expenses</h2>
+                <button class="btn btn-small" onclick="showTab('upload')">+ Add New</button>
+            </div>
+            <div id="expensesList"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

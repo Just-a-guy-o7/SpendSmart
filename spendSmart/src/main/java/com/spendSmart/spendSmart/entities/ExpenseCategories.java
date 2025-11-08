@@ -29,6 +29,7 @@ public class ExpenseCategories {
     private String CategoryName;
     @Column(length = 1000)
     private String Description;
-//     @OneToMany(mappedBy = "ExpenseCategories",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-//     private List<Expense> expenses=new ArrayList<>();
+    @OneToMany(mappedBy = "Category",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private List<Expense> expenses=new ArrayList<>();
+    //check
 }

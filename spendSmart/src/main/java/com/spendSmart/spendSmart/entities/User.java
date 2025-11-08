@@ -10,6 +10,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -65,18 +67,23 @@ public class User {
     private List<Challenges> challenges=new ArrayList<>();
 
 
-    // @OneToMany(mappedBy = "User",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    // private List<Expense> expenses=new ArrayList<>();
+    @OneToMany(mappedBy = "ExpenseOfUser",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private List<Expense> expenses=new ArrayList<>();
+
     
+    @OneToMany(mappedBy = "OwesFrom",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private List<Dues> owesFrom=new ArrayList<>();
+
     
-    // @OneToMany(mappedBy = "User",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    // private List<Dues> owesFrom=new ArrayList<>();
-    
-    
-    // @OneToMany(mappedBy = "User",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    // private List<Dues> owesTo=new ArrayList<>();
+    @OneToMany(mappedBy = "OwesTo",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private List<Dues> owesTo=new ArrayList<>();
 
 
-    // @ManyToMany(mappedBy = "User",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    // private List<Group> Groups=new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name = "Users_Groups",
+        joinColumns=@JoinColumn(name="user_id")  ,
+        inverseJoinColumns = @JoinColumn(name="groupId")  
+    )
+    private List<Group> Groups=new ArrayList<>();
+  
 }

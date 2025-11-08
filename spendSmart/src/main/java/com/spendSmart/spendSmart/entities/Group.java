@@ -32,13 +32,13 @@ public class Group {
     @Column(name = "group_id")
     private String groupId;
 
-    // @ManyToMany(mappedBy = "Group",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    // private List<User> Groups=new ArrayList<>();
-
-    // @ManyToMany(mappedBy = "Group",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    // private List<Dues> records=new ArrayList<>();
+    @ManyToMany(mappedBy = "Groups")
+    private List<User> GroupMembers=new ArrayList<>();
     
-    // @ManyToMany(mappedBy = "Group",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    // private List<Expense> Expenses=new ArrayList<>();
-
+    @OneToMany(mappedBy = "PartOfGroup",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Dues> records=new ArrayList<>();
+    
+    @OneToMany(mappedBy = "Group",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Expense> Expenses=new ArrayList<>();
+    
 }

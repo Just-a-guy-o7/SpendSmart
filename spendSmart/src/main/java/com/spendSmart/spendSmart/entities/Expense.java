@@ -35,12 +35,14 @@ public class Expense {
     private double Amount;
 
 
-    // @ManyToOne
-    // private User User;
-    // @ManyToOne
-    // private Group Group;
-    // @ManyToOne
-    // private ExpenseCategories Category;
-
+    @ManyToOne
+    private User ExpenseOfUser;
+   
+    @ManyToOne
+    private Group Group;
+    //check
+    @ManyToOne
+    private ExpenseCategories Category;
+    //check
 }
 

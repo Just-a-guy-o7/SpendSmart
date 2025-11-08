@@ -28,4 +28,5 @@ public class Challenges {
 
     @ManyToOne
     private User User;
+    //check
 }

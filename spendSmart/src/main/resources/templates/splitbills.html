@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendSmart - Split Bills</title>
+    <link rel="stylesheet" href="styles-split-bills.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="dashboard-header">
+            <h1>💰 SpendSmart</h1>
+            <p>Welcome, <span id="userName">User</span>!</p>
+            <button class="btn btn-small btn-secondary" onclick="logout()">Logout</button>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <h2>Split Expense</h2>
+            </div>
+            <form id="splitForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" id="splitDesc" placeholder="e.g., Dinner with friends" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Total Amount (₹)</label>
+                        <input type="number" id="splitAmount" step="0.01" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Add Participants (comma-separated names)</label>
+                    <input type="text" id="splitParticipants" placeholder="John, Sarah, Mike" required>
+                </div>
+                <div class="form-group">
+                    <label>Split Type</label>
+                    <select id="splitType">
+                        <option value="equal">Equal Split</option>
+                        <option value="custom">Custom Amounts</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Calculate Split</button>
+            </form>
+
+            <div id="splitResult" style="display: none; margin-top: 30px;">
+                <h3>Split Details</h3>
+                <div id="participantsList" class="participants-list"></div>
+                <button class="btn btn-success" onclick="saveSplit()">Save Split</button>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <h2>Your Balances</h2>
+            </div>
+            <div id="balancesList"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

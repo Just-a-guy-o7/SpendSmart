@@ -30,14 +30,14 @@ public class Dues {
     private String DuesID;
     private String ammount;
 
-    // @ManyToOne
-    // private User owesTo;
-    
-    // @ManyToOne
-    // private User owesFrom;
-    
-    // @ManyToOne
-    // private Group records;
-
+    @ManyToOne
+    private User OwesTo;
+  
+    @ManyToOne
+    private User OwesFrom;
+    //check
+    @ManyToOne
+    private Group PartOfGroup;
+    //check
 
 }
