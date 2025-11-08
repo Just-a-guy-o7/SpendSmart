@@ -1,8 +1,17 @@
 package com.spendSmart.spendSmart.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.data.util.Lazy;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,9 +36,6 @@ public class User {
     @Column(name = "name", nullable = false)
     private String name;
     
-    @Column(name = "phone_number", nullable = false)
-    private String phoneNumber;
-    
     @Column(name = "email", nullable = false)
     private String email;
     
@@ -39,9 +45,6 @@ public class User {
     @Column(name = "profile_picture_url", length = 1000)
     private String profilePictureUrl;
     
-    @Column(name = "about", length = 1000)
-    private String about;
-    
     @Column(name = "is_enabled")
     private boolean isEnabled;
     
@@ -49,8 +52,31 @@ public class User {
     private boolean isEmailVerified;
     
     @Column(name = "provider")
-    private String provider;
+    private Provider provider;
     
     @Column(name = "provider_id")
     private String providerId;
+
+    @Column(name = "role")
+    private Roles role;
+
+
+    @OneToMany(mappedBy = "User",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private List<Challenges> challenges=new ArrayList<>();
+
+
+    // @OneToMany(mappedBy = "User",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    // private List<Expense> expenses=new ArrayList<>();
+    
+    
+    // @OneToMany(mappedBy = "User",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    // private List<Dues> owesFrom=new ArrayList<>();
+    
+    
+    // @OneToMany(mappedBy = "User",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    // private List<Dues> owesTo=new ArrayList<>();
+
+
+    // @ManyToMany(mappedBy = "User",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    // private List<Group> Groups=new ArrayList<>();
 }
