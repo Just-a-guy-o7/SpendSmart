@@ -3,6 +3,7 @@ package com.spendSmart.spendSmart.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +13,8 @@ import com.spendSmart.spendSmart.entities.Roles;
 import com.spendSmart.spendSmart.entities.User;
 import com.spendSmart.spendSmart.forms.UserForm;
 import com.spendSmart.spendSmart.repositories.UserService;
+
+import jakarta.validation.Valid;
 
 
 
@@ -24,7 +27,7 @@ public class PageController {
 
     @RequestMapping("/home")
     public String home() {
-        return "dashboard";
+        return "loginpage";
     }
     @RequestMapping("/signUp")
     public String signUp(Model model) {
@@ -34,7 +37,11 @@ public class PageController {
     }
 
     @RequestMapping(value="/do-register",method =RequestMethod.POST)
-    public String registerUser(@ModelAttribute UserForm userForm) {
+    public String registerUser(@Valid @ModelAttribute UserForm userForm,BindingResult rBindingResult) {
+        if(rBindingResult.hasErrors()){
+            return "signUpPage";
+        }
+        
         System.out.println(userForm);
 
 
@@ -53,6 +60,6 @@ public class PageController {
     }
     @RequestMapping("/login")
     public String login() {
-        return "login";
+        return "loginpage";
     }
 }

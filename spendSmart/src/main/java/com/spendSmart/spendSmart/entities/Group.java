@@ -3,7 +3,6 @@ package com.spendSmart.spendSmart.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.data.util.Lazy;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

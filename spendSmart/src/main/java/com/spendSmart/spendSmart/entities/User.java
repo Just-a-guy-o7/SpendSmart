@@ -1,12 +1,17 @@
 package com.spendSmart.spendSmart.entities;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import org.springframework.data.util.Lazy;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
@@ -29,7 +34,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class User {
+public class User implements UserDetails{
 
        
     @Id
@@ -60,7 +65,7 @@ public class User {
     
     @Column(name = "provider_id")
     private String providerId;
-    
+
     @Enumerated
     @Column(name = "role")
     private Roles role;
@@ -88,5 +93,20 @@ public class User {
         inverseJoinColumns = @JoinColumn(name="groupId")  
     )
     private List<Group> Groups=new ArrayList<>();
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roleList=new ArrayList<>();
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Collection<SimpleGrantedAuthority> authorities=roleList.stream().map(role->new SimpleGrantedAuthority(role)).collect(Collectors.toList());    
+        return authorities;
+        }
+
+
+    @Override
+    public String getUsername() {
+        return this.email;    
+    }
   
 }
