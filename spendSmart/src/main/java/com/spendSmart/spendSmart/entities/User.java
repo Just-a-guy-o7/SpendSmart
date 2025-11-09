@@ -8,6 +8,7 @@ import org.springframework.data.util.Lazy;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -53,12 +54,14 @@ public class User {
     @Column(name = "is_email_verified")
     private boolean isEmailVerified;
     
+    @Enumerated
     @Column(name = "provider")
     private Provider provider;
     
     @Column(name = "provider_id")
     private String providerId;
-
+    
+    @Enumerated
     @Column(name = "role")
     private Roles role;
 
