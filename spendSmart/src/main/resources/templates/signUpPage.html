@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/css/styles-login.css">
   </head>
   <body>
     <div id="signupPage" class="auth-page">
@@ -31,7 +32,7 @@
         <button type="submit" class="btn">Sign Up</button>
       </form>
       <div class="switch-auth">
-        Already have an account? <a onclick="">Login</a>
+        Already have an account? <a data-th-href="@{'/login'}">Login</a>
       </div>
     </div>
   </body>

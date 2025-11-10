@@ -1,24 +1,17 @@
 package com.spendSmart.spendSmart.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.spendSmart.spendSmart.services.SecurityCustomUserDetailService;
-
 @Configuration
 public class SecurityConfig {
-
-    @Autowired
-    private SecurityCustomUserDetailService userDetailService;
 
     @Bean
     public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService) {
@@ -26,7 +19,9 @@ public class SecurityConfig {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider(userDetailsService);
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         return daoAuthenticationProvider;
+        
     }
+    
 
     @Bean
     public static BCryptPasswordEncoder passwordEncoder() {
@@ -39,11 +34,21 @@ public class SecurityConfig {
 
         httpSecurity.authorizeHttpRequests((requests) -> {
             requests
-                    .requestMatchers("/user/**").authenticated()
-                    .requestMatchers("/**").permitAll();
+            .requestMatchers("/user/**").authenticated()        
+            .requestMatchers("/**").permitAll()
                     
+                    .anyRequest().authenticated();
+
         });
-        httpSecurity.formLogin(Customizer.withDefaults());
+        httpSecurity.formLogin(formLogin -> {
+            formLogin
+                    .loginPage("/login")
+                    .loginProcessingUrl("/authenticate")
+                    .successForwardUrl("/user/dashboard")
+                    .failureForwardUrl("/login?error=true")
+                    .usernameParameter("email")
+                    .passwordParameter("password");
+        });
 
         httpSecurity.csrf(AbstractHttpConfigurer::disable);
 
@@ -51,7 +56,6 @@ public class SecurityConfig {
                 .logoutUrl("/do-logout")
                 .logoutSuccessUrl("/login?logout=true"));
 
-        
         httpSecurity.csrf(AbstractHttpConfigurer::disable);
 
         return httpSecurity.build();

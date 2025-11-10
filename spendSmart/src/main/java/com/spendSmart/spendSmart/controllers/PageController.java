@@ -29,6 +29,10 @@ public class PageController {
     public String home() {
         return "loginpage";
     }
+    @RequestMapping("/")
+    public String home2() {
+        return "loginpage";
+    }
     @RequestMapping("/signUp")
     public String signUp(Model model) {
         UserForm userForm=new UserForm();
@@ -61,5 +65,13 @@ public class PageController {
     @RequestMapping("/login")
     public String login() {
         return "loginpage";
+    }
+    @RequestMapping("/logout")
+    public String logout() {
+        return "redirect:login";
+    }
+    @RequestMapping("/authenticate")
+    public String auth() {
+        return "redirect:user/dashboard";
     }
 }

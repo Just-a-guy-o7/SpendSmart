@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expense Tracker - Dashboard</title>
-    <link rel="stylesheet" data-th-href="@{'/style-dashboard.css'}" />
+    <link rel="stylesheet" data-th-href="@{'/css/styles-dashboard.css'}" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
@@ -14,7 +14,7 @@
         <div class="dashboard-header">
           <h1>Expense Tracker</h1>
           <p>Welcome back, <span id="userName">User</span></p>
-          <button class="logout-btn" onclick="logout()">Logout</button>
+          <button > <a data-th-href="@{'/logout'}">logout</a></button>
         </div>
 
         <div class="nav-tabs">
@@ -160,6 +160,6 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="/script/script.js"></script>
   </body>
 </html>
