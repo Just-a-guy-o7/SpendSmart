@@ -66,10 +66,6 @@ public class PageController {
     public String login() {
         return "loginpage";
     }
-    @RequestMapping("/logout")
-    public String logout() {
-        return "redirect:login";
-    }
     @RequestMapping("/authenticate")
     public String auth() {
         return "redirect:user/dashboard";
