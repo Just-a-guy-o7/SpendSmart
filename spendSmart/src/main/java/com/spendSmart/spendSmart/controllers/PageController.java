@@ -60,7 +60,7 @@ public class PageController {
         .build();
         userService.saveUser(userToSave);
 
-        return "redirect:/signUp";
+        return "redirect:/login";
     }
     @RequestMapping("/login")
     public String login() {

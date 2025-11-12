@@ -13,6 +13,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -59,14 +60,14 @@ public class User implements UserDetails{
     @Column(name = "is_email_verified")
     private boolean isEmailVerified;
     
-    @Enumerated
+    @Enumerated(value = EnumType.STRING)
     @Column(name = "provider")
     private Provider provider;
     
     @Column(name = "provider_id")
     private String providerId;
 
-    @Enumerated
+    @Enumerated(value = EnumType.STRING)
     @Column(name = "role")
     private Roles role;
 

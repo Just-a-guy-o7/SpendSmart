@@ -58,6 +58,16 @@ public class SecurityConfig {
 
         httpSecurity.csrf(AbstractHttpConfigurer::disable);
 
+
+         httpSecurity.oauth2Login(oauth -> {
+            oauth
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/user/dashboard", true)
+                    .failureUrl("/login?error=true");
+                    // .successHandler(oAuthAuthenticationSuccessHandler);
+
+        });
+
         return httpSecurity.build();
     }
 }
