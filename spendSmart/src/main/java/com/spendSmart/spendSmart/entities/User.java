@@ -93,7 +93,7 @@ public class User implements UserDetails{
         joinColumns=@JoinColumn(name="user_id")  ,
         inverseJoinColumns = @JoinColumn(name="groupId")  
     )
-    private List<Group> Groups=new ArrayList<>();
+    private List<Groups> Groups=new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roleList=new ArrayList<>();

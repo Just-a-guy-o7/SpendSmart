@@ -30,7 +30,7 @@ public class Dues {
     private User OwesFrom;
     //check
     @ManyToOne
-    private Group PartOfGroup;
+    private Groups PartOfGroup;
     //check
 
 }

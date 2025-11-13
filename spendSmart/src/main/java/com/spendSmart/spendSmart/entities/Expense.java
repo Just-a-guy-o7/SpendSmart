@@ -34,7 +34,7 @@ public class Expense {
     private User ExpenseOfUser;
    
     @ManyToOne
-    private Group Group;
+    private Groups Group;
     //check
     @ManyToOne
     private ExpenseCategories Category;

@@ -31,6 +31,7 @@ public class PageController {
     }
     @RequestMapping("/")
     public String home2() {
+        System.out.println("Google client ID : "+System.getenv("GOOGLE_CLIENT_ID"));
         return "loginpage";
     }
     @RequestMapping("/signUp")

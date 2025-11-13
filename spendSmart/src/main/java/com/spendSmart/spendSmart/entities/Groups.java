@@ -18,18 +18,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name="Group")
-@Table(name="Groups")
+@Entity(name="groupsUsers")
+@Table(name="groupsUsers")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Group {
+public class Groups {
 
     @Id
-    @Column(name = "group_id")
+    @Column(name = "groupId")
     private String groupId;
+    
+    @Column(name = "description")
+    private String description;
+    
+    @Column(name = "Group_name")
+    private String groupName;
 
     @ManyToMany(mappedBy = "Groups")
     private List<User> GroupMembers=new ArrayList<>();
