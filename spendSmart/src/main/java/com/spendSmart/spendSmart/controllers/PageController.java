@@ -27,7 +27,7 @@ public class PageController {
 
     @RequestMapping("/home")
     public String home() {
-        return "loginpage";
+        return "home";
     }
     @RequestMapping("/")
     public String home2() {

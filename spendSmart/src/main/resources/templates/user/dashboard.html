@@ -13,7 +13,7 @@
       <div id="dashboard">
         <div class="dashboard-header">
           <h1>Expense Tracker</h1>
-          <p>Welcome back, <span id="userName">User</span></p>
+          <p>Welcome back, <span id="userName" data-th-text="${username}"></span></p>
           <button > <a data-th-href="@{'/do-logout'}">logout</a></button>
         </div>
 
