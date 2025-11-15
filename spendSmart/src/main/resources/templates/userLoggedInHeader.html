@@ -1,0 +1,41 @@
+<div data-th-fragment="userLoggedInHeader">
+  <nav
+    class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 fixed top-0 left-0 w-full h-22 z-50 pb-1 shadow"
+  >
+  <!-- <div class="flex items-center w-full">
+  <div class="flex space-x-4">
+    <div>Left Element 1</div>
+    <div>Left Element 2</div>
+  </div>
+  <div class="mx-auto">Center Element</div>
+  <div>Right Element</div>
+</div> -->
+    <div class="max-w-screen flex flex-wrap items-center  justify-between p-4 pb-1">
+      <div>
+      <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img th:src="@{'/images/photo.jpg'}" class="h-8" alt="mairi photo" />
+        <span
+          class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+          >SpendSmart</span
+        >
+      </a>
+      <p class="pt-1">
+      Welcome back,
+      <a href="profile">
+      <span id="userName" data-th-text="${username}" class="text-blue-500 underline"></span>
+      </a>
+    </p>
+      </div>
+      <div>
+        <a
+          href="/do-logout"
+          class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+        >
+          log-out
+        </a>
+      </div>
+    </div>
+    
+    <div></div>
+  </nav>
+</div>

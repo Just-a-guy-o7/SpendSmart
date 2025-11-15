@@ -4,7 +4,7 @@
 <html
   lang="en"
   xmlns:th="http://www.thymeleaf.org"
-  th:fragment="parent(title,header,content)"
+  th:fragment="parent(title,style,header,content,script)"
 >
   <head>
     <meta charset="UTF-8" />
@@ -16,15 +16,15 @@
     href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
     rel="stylesheet"
     />
-
+    <link rel="stylesheet" data-th-replace="${style}">
   </head>
   <body class="bg-[linear-gradient(135deg,#667eea_0%,#764ba2_100%)]">
     <!-- header  -->
     <div th:replace="${header}"></div>
 
     <!-- sidebar -->
-
-    <div th-replace="${sidebar::sidebar}"></div>
+<!-- 
+    <div th:replace="${sidebar::sidebar}"></div> -->
 
     <!-- dynamic contect -->
     <div>
@@ -36,6 +36,7 @@
 
     <!-- common script for flowbite -->
 <script src="https://unpkg.com/flowbite@latest/dist/flowbite.js"></script>
+<link rel="script" data-th-replace="${script}">
 
   </body>
 </html>

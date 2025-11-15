@@ -1,34 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html
+  lang="en"
+  data-th-replace="~{base::parent(~{::title},~{::#style},~{::#header},~{::#content},~{::#src})}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expense Tracker - Login</title>
-    <link rel="stylesheet" href="/css/styles-login.css">
-</head>
-<body>
-    <div class="container">
-        <!-- Login Page -->
-        <div id="loginPage" class="auth-page">
+    <link id="style" rel="stylesheet" href="/css/styles-login.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div data-th-replace="~{userLoggedOutHeader::userLoggedOutHeader}"></div>
+    </div>
+    <div id="content">
+      <div class="grid grid-cols-12 pt-4">
+        <div class="col-span-4"></div>
+        <div class="container col-span-4">
+          <!-- Login Page -->
+          <div id="loginPage" class="auth-page">
             <h2>Welcome Back!</h2>
             <p>Login to manage your expenses</p>
-            <form method="post" data-th-action="@{'/authenticate'}" id="loginForm">
-                <div class="form-group">
-                    <label>Email</label>
-                    <input name="email" type="email" id="loginEmail" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input name="password" type="password" id="loginPassword" required>
-                </div>
-                <button type="submit" class="btn">Login</button>
+            <form
+              method="post"
+              data-th-action="@{'/authenticate'}"
+              id="loginForm"
+            >
+              <div class="form-group">
+                <label>Email</label>
+                <input name="email" type="email" id="loginEmail" required />
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input
+                  name="password"
+                  type="password"
+                  id="loginPassword"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn">Login</button>
             </form>
-            <button><a data-th-href="@{'/oauth2/authorization/google'}">login with google</a></button>
+            <button>
+              <a data-th-href="@{'/oauth2/authorization/google'}"
+                >login with google</a
+              >
+            </button>
             <div class="switch-auth">
-                Don't have an account? <a data-th-href="@{'/signUp'}">Sign Up</a>
+              Don't have an account? <a data-th-href="@{'/signUp'}">Sign Up</a>
             </div>
+          </div>
         </div>
-
-    <script src="script.js"></script>
-</body>
+      </div>
+    </div>
+    <script id="src" src="script.js"></script>
+  </body>
 </html>

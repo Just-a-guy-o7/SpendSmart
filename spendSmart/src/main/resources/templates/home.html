@@ -1,44 +1,17 @@
 <!DOCTYPE html>
 <html
   lang="en"
-  data-th-replace="~{base::parent(~{::#title},~{::#header},~{::#content})}"
+  data-th-replace="~{base::parent(~{::#title},~{::#style},~{::#header},~{::#content},~{::#src})}"
 >
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title id="title">home page</title>
+    <link rel="stylesheet" id="style">
   </head>
   <body>
     <div id="header">
-        <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-    <div
-      class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
-    >
-      <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img th:src="@{'/images/photo.jpg'}" class="h-8" alt="mairi photo" />
-        <span
-          class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-          >SpendSmart</span
-        >
-      </a>
-      
-      <div>
-        <a
-          href="/login"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          login
-        </a>
-
-        <a
-          href="/signUp"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Sign up
-        </a>
-      </div>
-    </div>
-  </nav>
+      <div data-th-replace="~{userLoggedOutHeader::userLoggedOutHeader}"></div>
     </div>
     <div id="content" class="pt-[70px] height-1000">
       <div>
@@ -140,4 +113,5 @@
       </div>
     </div>
   </body>
+  <script id="src" src=""></script>
 </html>

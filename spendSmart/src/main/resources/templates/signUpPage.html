@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-th-replace="~{base::parent(~{::title},~{::#style},~{::#header},~{::#content},~{::#script})}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/styles-login.css">
+    <title>SpendSmart | signUp</title>
+    <link rel="stylesheet" id="style" href="/css/styles-login.css">
   </head>
   <body>
-    <div id="signupPage" class="auth-page container">
+    <div id="header">
+      <div data-th-replace="~{userLoggedOutHeader::userLoggedOutHeader}"></div>
+    </div>
+    <div id="content">
+      <div class="grid grid-cols-12 pt-4">
+        <div class="col-span-4"></div>
+        <div id="signupPage" class="auth-page container col-span-4">
       <h2>Create Account</h2>
       <p>Start tracking your expenses today</p>
       <form
@@ -35,5 +41,7 @@
         Already have an account? <a data-th-href="@{'/login'}">Login</a>
       </div>
     </div>
+
   </body>
+  <script id="script"></script>
 </html>
