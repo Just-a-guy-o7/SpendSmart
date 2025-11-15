@@ -1,0 +1,27 @@
+{
+  "name": "spendsmart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Just-a-guy-o7/SpendSmart.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Just-a-guy-o7/SpendSmart/issues"
+  },
+  "homepage": "https://github.com/Just-a-guy-o7/SpendSmart#readme",
+  "devDependencies": {
+    "tailwindcss": "^4.1.17"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6"
+  }
+}

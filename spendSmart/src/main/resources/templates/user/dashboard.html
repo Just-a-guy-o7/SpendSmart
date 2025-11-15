@@ -16,12 +16,32 @@
   </head>
   <body>
     <div id="header">
-      <div data-th-replace="~{userLoggedInHeader::userLoggedInHeader}"></div>
+      <div
+        data-th-replace="~{userLoggedInHeader::userLoggedInHeader(~{::#tab1},~{::#tab2},~{::#tab3})}"
+      >
+        <div class="nav-tabs">
+          <button
+            id="tab1"
+            class="nav-tab active"
+            onclick="showTab('expenses')"
+          >
+            Expenses
+          </button>
+          <button id="tab2" class="nav-tab" onclick="showTab('analytics')">
+            Analytics
+          </button>
+          <button id="tab3" class="nav-tab" onclick="showTab('splitwise')">
+            Splitwise
+          </button>
+        </div>
+      </div>
     </div>
 
     <div id="content">
-      <div class="grid grid-cols-12 pt-22 mt-5y" >
-        <div class="col-span-1"></div>
+      <div class="grid grid-cols-12 pt-33 mt-5">
+         <div class="col-span-2">
+          <!-- <div data-th-replace="${sidebar::sidebarr}"></div> -->
+        </div> 
         <div class="container col-span-10">
           <!-- Dashboard -->
           <div id="dashboard">
@@ -33,18 +53,6 @@
               </p>
               <button><a data-th-href="@{'/do-logout'}">logout</a></button>
             </div> -->
-
-            <div class="nav-tabs">
-              <button class="nav-tab active" onclick="showTab('expenses')">
-                Expenses
-              </button>
-              <button class="nav-tab" onclick="showTab('analytics')">
-                Analytics
-              </button>
-              <button class="nav-tab" onclick="showTab('splitwise')">
-                Splitwise
-              </button>
-            </div>
 
             <!-- Expenses Tab -->
             <div id="expensesTab" class="tab-content active">
@@ -199,5 +207,4 @@
     </div>
   </body>
   <script id="script" src="/script/script.js"></script>
-
 </html>
