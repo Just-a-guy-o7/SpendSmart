@@ -1,6 +1,5 @@
 <!-- npx tailwindcss -i src/main/resources/static/css/input.css -o src/main/resources/static/css/output.css --watch -->
 
-
 <!DOCTYPE html>
 <html
   lang="en"
@@ -11,13 +10,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title th:replace="${title}">Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
-      rel="stylesheet"
-    />
+    <!-- <link rel="stylesheet" data-th-href="@{'/css/style.css'}" /> -->
     <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
+    <link
+    href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+    rel="stylesheet"
+    />
+
   </head>
-  <body class=" ">
+  <body class="bg-[linear-gradient(135deg,#667eea_0%,#764ba2_100%)]">
     <!-- header  -->
     <div th:replace="${header}"></div>
 
@@ -34,6 +35,7 @@
     <div th:replace="~{footer::footer}"></div>
 
     <!-- common script for flowbite -->
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+<script src="https://unpkg.com/flowbite@latest/dist/flowbite.js"></script>
+
   </body>
 </html>

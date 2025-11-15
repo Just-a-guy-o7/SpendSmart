@@ -1,20 +1,143 @@
 <!DOCTYPE html>
-<html lang="en" data-th-replace="~{base::parent(~{::#title},~{::#header},~{::#content})}">
+<html
+  lang="en"
+  data-th-replace="~{base::parent(~{::#title},~{::#header},~{::#content})}"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title id="title">home page</title>
   </head>
   <body>
-    <div id="header">temp header</div>
-    <div id="content">
-      <h1>Welcome to Home page</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis labore
-        recusandae reprehenderit, amet cumque dolorum accusamus quos voluptatum
-        soluta. Quod eveniet explicabo quidem unde illum ipsam dolores itaque
-        repellendus fugit.
-      </p>
+    <div id="header">
+        <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+    <div
+      class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+    >
+      <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img th:src="@{'/images/photo.jpg'}" class="h-8" alt="mairi photo" />
+        <span
+          class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+          >SpendSmart</span
+        >
+      </a>
+      
+      <div>
+        <a
+          href="/login"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          login
+        </a>
+
+        <a
+          href="/signUp"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Sign up
+        </a>
+      </div>
+    </div>
+  </nav>
+    </div>
+    <div id="content" class="pt-[70px] height-1000">
+      <div>
+        <hr />
+        <h1>hehe</h1>
+        <!-- <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit
+          cumque rerum est non vel aspernatur pariatur fugiat neque amet?
+          Voluptate sint laboriosam exercitationem officiis repellat iure
+          numquam laudantium consequatur deserunt odit. Blanditiis quas
+          explicabo doloribus placeat dolore laboriosam, illum aut dolores
+          reiciendis est maxime eligendi eius aspernatur non sint aperiam eos
+          voluptates voluptatibus mollitia corporis quasi dignissimos iusto. Ex
+          dolorem rem quam, illum consequuntur culpa non debitis! Ea laudantium
+          eaque saepe praesentium laborum dolores aliquid fuga nobis a eum
+          architecto libero voluptatibus nam mollitia vel amet optio deserunt
+          maxime dicta, quas enim cumque voluptate? Possimus ea velit
+          exercitationem ipsum mollitia distinctio sequi porro error vitae
+          molestiae maxime accusamus, non debitis commodi fugit repellendus quo,
+          nostrum quibusdam totam consequuntur? Quod minus, porro cupiditate
+          eveniet temporibus eligendi dolorem accusamus optio veritatis ut!
+          Sequi, eveniet voluptas magnam soluta obcaecati eius? Temporibus eius
+          nisi, ea facilis modi quidem numquam aliquid in corporis rerum! Ea
+          odio dolores ad quos. Quo dolore necessitatibus tempora sit nemo animi
+          totam dignissimos accusamus vitae consequatur sint praesentium in non
+          ipsum aut architecto eum tenetur odio omnis, vel cum similique
+          possimus eveniet. Recusandae velit quaerat quidem, suscipit nulla
+          saepe ipsa est aut quos quam neque optio illum dolorum soluta sapiente
+          ab dolorem architecto ut, consequatur eveniet laudantium maiores?
+          Exercitationem aspernatur facilis voluptate eius quia repudiandae
+          deserunt, laudantium quis. Consequatur, neque. Similique, rem
+          voluptatum! Fugiat atque doloremque nostrum voluptatum necessitatibus
+          tenetur id quis ullam, neque excepturi. Consectetur similique ea iure
+          quas corporis sequi. Inventore, velit omnis harum possimus quaerat
+          quos, reprehenderit quae illo explicabo sed eius nobis, dolor pariatur
+          neque eum asperiores reiciendis illum veniam adipisci quasi alias
+          sint. Odio esse laboriosam voluptate blanditiis hic. Amet architecto
+          quo tempora ducimus velit dolor praesentium fuga facilis doloribus
+          possimus veniam aperiam modi magnam mollitia, aliquid nesciunt
+          cupiditate recusandae eius deserunt cumque veritatis unde dignissimos
+          dolores. Maiores nobis voluptas atque quis. Id, quam culpa!
+          Perferendis voluptatum hic beatae animi ratione dolorum autem.
+          Explicabo odit in repellendus, eveniet optio ipsam obcaecati tempore
+          quo veritatis delectus rem dolorum eaque inventore. Ratione ea
+          consectetur suscipit nisi veniam placeat eos, soluta labore blanditiis
+          accusamus similique reiciendis doloremque aspernatur iusto, minima
+          voluptatum cupiditate praesentium ex inventore mollitia pariatur.
+          Iste, repellat. Est quam aspernatur mollitia! Nulla aut dicta enim
+          molestias ipsum nihil voluptatibus necessitatibus? Minus ex
+          perferendis ut placeat consequuntur! Aut quam, beatae dignissimos
+          magni aliquid, necessitatibus minima similique deserunt eligendi error
+          rem distinctio impedit. Non illo velit, quisquam culpa dicta
+          aspernatur laudantium tempore eos repudiandae porro voluptate
+          exercitationem reiciendis delectus, ratione in corporis quia! Minus,
+          optio alias. Adipisci facere consectetur natus ea quae rem dicta,
+          harum velit sunt deleniti sed rerum, consequatur architecto aliquam
+          fugit, inventore vero quia odio dolorum iusto enim deserunt est? Velit
+          illo consectetur a sint, odio praesentium non culpa laudantium eos.
+          Sed mollitia quod maiores dolorum sit nihil quaerat incidunt
+          praesentium error minima. Aliquam alias culpa asperiores, aliquid quos
+          laboriosam consequuntur, nihil possimus ex animi molestias atque vero
+          fugiat sunt esse corporis facere deleniti harum fugit odio, maxime
+          earum. Quaerat omnis atque dolorem unde. Iusto voluptatibus aliquid
+          exercitationem rem quae, magni autem voluptate a repellendus labore
+          aliquam, laudantium rerum! Magni odio ut voluptates? Similique dicta
+          corrupti aperiam, quod laboriosam, minima eligendi nisi minus placeat
+          ut vel est totam necessitatibus nulla at provident saepe amet.
+          Cupiditate nobis quasi a eos dignissimos laudantium fuga quos ex,
+          placeat quisquam pariatur, minima eum, perspiciatis tempore.
+          Cupiditate deleniti itaque magnam vitae laborum quo aspernatur quae,
+          officiis error aperiam vero, exercitationem asperiores dignissimos
+          accusamus amet molestiae tempora molestias iusto animi reiciendis
+          facere. Dolorem, labore. Adipisci, consequatur eum! Accusantium
+          similique voluptates vero temporibus odit? Sint, quaerat! Magnam nobis
+          ipsam impedit asperiores animi beatae enim magni optio dicta sed nulla
+          a temporibus, numquam pariatur, architecto excepturi vitae sequi at
+          voluptate alias porro provident unde facere quaerat! Iste,
+          exercitationem? Totam doloremque, at adipisci nulla deserunt
+          temporibus omnis? Dolorem officia magni eveniet inventore quas
+          accusantium commodi rem doloremque voluptatem, iste, pariatur
+          explicabo sed nisi sunt ut minima ex praesentium minus odio assumenda?
+          Sapiente animi aperiam assumenda alias aliquam nihil, quibusdam eos
+          sequi, sint, ad non. Voluptatibus, eligendi, quisquam reiciendis,
+          suscipit velit molestias beatae voluptas nemo earum doloremque quia
+          aliquam dolor explicabo labore ipsum ex delectus obcaecati eum sunt
+          tenetur mollitia esse fugit laborum natus! Facilis, saepe? Dignissimos
+          id ipsum consequuntur, nemo dicta natus unde deserunt, reprehenderit
+          quas vel totam ex aliquam hic cupiditate!
+        </p> -->
+      </div>
+      <div>
+        <h1 class="border-b top-10 font-semibold">Welcome to Home page</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+          labore recusandae reprehenderit, amet cumque dolorum accusamus quos
+          voluptatum soluta. Quod eveniet explicabo quidem unde illum ipsam
+          dolores itaque repellendus fugit.
+        </p>
+      </div>
     </div>
   </body>
 </html>
