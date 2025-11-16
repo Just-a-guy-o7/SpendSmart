@@ -4,7 +4,7 @@
 <html
   lang="en"
   xmlns:th="http://www.thymeleaf.org"
-  th:fragment="parent(title,style,header,content,script)"
+  th:fragment="parent(title,style,header,content,footer,script)"
 >
   <head>
     <meta charset="UTF-8" />
@@ -13,15 +13,14 @@
     <!-- <link rel="stylesheet" data-th-href="@{'/css/style.css'}" /> -->
     <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
     <link
-    href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
-    rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+      rel="stylesheet"
     />
-    <link rel="stylesheet" data-th-replace="${style}">
+    <link rel="stylesheet" data-th-replace="${style}" />
   </head>
   <body class="bg-[linear-gradient(135deg,#667eea_0%,#764ba2_100%)]">
     <!-- header  -->
     <div th:replace="${header}"></div>
-
 
     <!-- dynamic contect -->
     <div>
@@ -29,11 +28,12 @@
     </div>
 
     <!-- footer -->
-    <div th:replace="~{footer::footer}"></div>
+      
+      <div th:replace="${footer}"></div>
+  
 
     <!-- common script for flowbite -->
-<script src="https://unpkg.com/flowbite@latest/dist/flowbite.js"></script>
-<link rel="script" data-th-replace="${script}">
-
+    <script src="https://unpkg.com/flowbite@latest/dist/flowbite.js"></script>
+    <link rel="script" data-th-replace="${script}" />
   </body>
 </html>

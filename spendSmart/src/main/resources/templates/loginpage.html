@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
   lang="en"
-  data-th-replace="~{base::parent(~{::title},~{::#style},~{::#header},~{::#content},~{::#src})}"
+  data-th-replace="~{base::parent(~{::title},~{::#style},~{::#header},~{::#content},~{::#footer},~{::#src})}"
 >
   <head>
     <meta charset="UTF-8" />
@@ -52,6 +52,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div id="footer">
+      <div  data-th-replace="~{userLoggedOutFooter::userLoggedOutFooter}"></div>
     </div>
     <script id="src" src="script.js"></script>
   </body>

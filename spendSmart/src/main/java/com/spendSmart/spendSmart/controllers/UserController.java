@@ -37,4 +37,9 @@ public class UserController {
          
         return "user/dashboard";
     }  
+    @RequestMapping("/group")
+    public String group(Model model,Authentication authentication) {
+         
+        return "user/group";
+    }  
 }

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" data-th-replace="~{base::parent(~{::title},~{::#style},~{::#header},~{::#content},~{::#script})}">
+<html
+  lang="en"
+  data-th-replace="~{base::parent(~{::title},~{::#style},~{::#header},~{::#content},~{::#footer},~{::#script})}"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SpendSmart | signUp</title>
-    <link rel="stylesheet" id="style" href="/css/styles-login.css">
+    <link rel="stylesheet" id="style" href="/css/styles-login.css" />
   </head>
   <body>
     <div id="header">
@@ -14,34 +17,38 @@
       <div class="grid grid-cols-12 pt-4">
         <div class="col-span-4"></div>
         <div id="signupPage" class="auth-page container col-span-4">
-      <h2>Create Account</h2>
-      <p>Start tracking your expenses today</p>
-      <form
-        data-th-action="@{'/do-register'}"
-        data-th-object="${userForm}"
-        method="post"
-        class="max-w-md mx-auto"
-        novalidate
-      >
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" th:field="*{fullName}" required />
+          <h2>Create Account</h2>
+          <p>Start tracking your expenses today</p>
+          <form
+            data-th-action="@{'/do-register'}"
+            data-th-object="${userForm}"
+            method="post"
+            class="max-w-md mx-auto"
+            novalidate
+          >
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" th:field="*{fullName}" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" th:field="*{email}" required />
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" th:field="*{password}" required />
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+          </form>
+          <div class="switch-auth">
+            Already have an account? <a data-th-href="@{'/login'}">Login</a>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" th:field="*{email}" required />
-        </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" th:field="*{password}" required />
-        </div>
-        <button type="submit" class="btn">Sign Up</button>
-      </form>
-      <div class="switch-auth">
-        Already have an account? <a data-th-href="@{'/login'}">Login</a>
       </div>
     </div>
-
+    <div id="footer">
+      <div data-th-replace="~{userLoggedOutFooter::userLoggedOutFooter}"></div>
+    </div>
   </body>
   <script id="script"></script>
 </html>
