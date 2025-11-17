@@ -17,12 +17,9 @@ import lombok.ToString;
 @Builder
 @ToString
 public class UserForm {
-
-
-
     @NotBlank(message = "Name is required")
     public String fullName;
-    
+
     @Email(message = "Please provide a valid email address")
     @NotBlank(message = "Email is required")
     public String email;
@@ -30,18 +27,5 @@ public class UserForm {
     @NotBlank(message = "Password is required")
     @Size(min = 6, message = "Password must be at least 6 characters long")
     public String password;
-    
-    // @AssertTrue(message = "passwords do not match")
-    // public boolean isPasswordMatching() {
-    //     if (password == null || confirmPassword == null) {
-    //         return false;
-    //     }
-    //     return password.equals(confirmPassword);
-    // }
-    // @NotBlank(message = "Confirm Password is required")
-    // @Size(min = 6, message = "Confirm Password must be at least 6 characters long")
-    // public String confirmPassword;
 
-
-    
 }

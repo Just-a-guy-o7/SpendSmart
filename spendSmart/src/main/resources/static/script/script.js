@@ -1,27 +1,57 @@
-        let currentUser = null;
-        let expenses = [];
-        let splits = [];
-        let challenges = [];
-        let currentSplit = null;
-        let charts = {};
+let currentUser = null;
+let expenses = [];
+let splits = [];
+let challenges = [];
+let currentSplit = null;
+let charts = {};
+let membersToAdd = [];
 
-        // Challenge Templates
-        const challengeTemplates = [
-            { title: "No Online Food Ordering", desc: "Avoid ordering food online this week", days: 7, savings: 1000, icon: "🍔" },
-            { title: "Coffee Shop Ban", desc: "Make coffee at home for 5 days", days: 5, savings: 500, icon: "☕" },
-            { title: "Public Transport Only", desc: "Use public transport instead of cabs", days: 7, savings: 800, icon: "🚌" },
-            { title: "No Shopping Weekend", desc: "Avoid shopping for the weekend", days: 2, savings: 2000, icon: "🛍️" },
-            { title: "Pack Your Lunch", desc: "Bring lunch from home this week", days: 5, savings: 600, icon: "🍱" }
-        ];
+// Challenge Templates
+const challengeTemplates = [
+  {
+    title: "No Online Food Ordering",
+    desc: "Avoid ordering food online this week",
+    days: 7,
+    savings: 1000,
+    icon: "🍔",
+  },
+  {
+    title: "Coffee Shop Ban",
+    desc: "Make coffee at home for 5 days",
+    days: 5,
+    savings: 500,
+    icon: "☕",
+  },
+  {
+    title: "Public Transport Only",
+    desc: "Use public transport instead of cabs",
+    days: 7,
+    savings: 800,
+    icon: "🚌",
+  },
+  {
+    title: "No Shopping Weekend",
+    desc: "Avoid shopping for the weekend",
+    days: 2,
+    savings: 2000,
+    icon: "🛍️",
+  },
+  {
+    title: "Pack Your Lunch",
+    desc: "Bring lunch from home this week",
+    days: 5,
+    savings: 600,
+    icon: "🍱",
+  },
+];
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            setupEventListeners();
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('billDate').value = today;
-            renderChallengeTemplates();
-        });
-
+// Initialize
+document.addEventListener("DOMContentLoaded", () => {
+  setupEventListeners();
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("billDate").value = today;
+  renderChallengeTemplates();
+});
 
 function showTab(tab) {
   document
@@ -163,47 +193,97 @@ function updateInsights() {
 }
 
 function renderChallenges() {
-            const container = document.getElementById('activeChallenges');
-            if (!container) return;
+  const container = document.getElementById("activeChallenges");
+  if (!container) return;
 
-            container.innerHTML = '';
-            const activeChallenges = challenges.filter(c => c.active);
+  container.innerHTML = "";
+  const activeChallenges = challenges.filter((c) => c.active);
 
-            if (activeChallenges.length === 0) {
-                container.innerHTML = `
+  if (activeChallenges.length === 0) {
+    container.innerHTML = `
                     <div class="empty-state">
                         <div class="empty-state-icon">🎯</div>
                         <h3>No active challenges</h3>
                         <p>Start a challenge to save money!</p>
                     </div>
                 `;
-                return;
-            }
+    return;
+  }
 
-            activeChallenges.forEach(challenge => {
-                const progress = (challenge.currentSavings / challenge.targetSavings) * 100;
-                const daysLeft = Math.max(0, challenge.duration - Math.floor((Date.now() - new Date(challenge.startDate)) / (1000 * 60 * 60 * 24)));
+  activeChallenges.forEach((challenge) => {
+    const progress = (challenge.currentSavings / challenge.targetSavings) * 100;
+    const daysLeft = Math.max(
+      0,
+      challenge.duration -
+        Math.floor(
+          (Date.now() - new Date(challenge.startDate)) / (1000 * 60 * 60 * 24)
+        )
+    );
 
-                const card = document.createElement('div');
-                card.className = 'challenge-card';
-                card.innerHTML = `
+    const card = document.createElement("div");
+    card.className = "challenge-card";
+    card.innerHTML = `
                     <div class="challenge-header">
-                        <div class="challenge-title">${challenge.icon || '🎯'} ${challenge.title}</div>
+                        <div class="challenge-title">${
+                          challenge.icon || "🎯"
+                        } ${challenge.title}</div>
                         <div class="challenge-icon">${daysLeft} days</div>
                     </div>
-                    <div class="challenge-description">${challenge.description}</div>
+                    <div class="challenge-description">${
+                      challenge.description
+                    }</div>
                     <div class="challenge-progress">
-                        <div class="challenge-progress-bar" style="width: ${Math.min(progress, 100)}%"></div>
+                        <div class="challenge-progress-bar" style="width: ${Math.min(
+                          progress,
+                          100
+                        )}%"></div>
                     </div>
                     <div class="challenge-stats">
-                        <span>₹${challenge.currentSavings} / ₹${challenge.targetSavings}</span>
+                        <span>₹${challenge.currentSavings} / ₹${
+      challenge.targetSavings
+    }</span>
                         <span>${Math.round(progress)}% Complete</span>
                     </div>
                     <div class="challenge-actions">
-                        <button class="btn btn-small btn-success" onclick="updateChallengeProgress(${challenge.id}, 100)">+₹100</button>
-                        <button class="btn btn-small btn-secondary" onclick="completeChallenge(${challenge.id})">Complete</button>
+                        <button class="btn btn-small btn-success" onclick="updateChallengeProgress(${
+                          challenge.id
+                        }, 100)">+₹100</button>
+                        <button class="btn btn-small btn-secondary" onclick="completeChallenge(${
+                          challenge.id
+                        })">Complete</button>
                     </div>
                 `;
-                container.appendChild(card);
-            });
-        }
+    container.appendChild(card);
+  });
+}
+
+function addMember() {
+  const inputs = document.getElementsByName('groupMembers');
+let hasEmpty = false;
+Array.from(inputs).forEach(input => {
+  if(input.value.trim().length === 0 && input.id!="hiffen") {
+    hasEmpty = true;
+  }
+});
+
+if(hasEmpty) {
+  return;
+}
+
+const addedEmails = document.getElementById("addedEmails");
+const card = document.createElement("div");
+card.className = "email";
+card.innerHTML = `
+  <div class="form-group" >
+    <input
+    class="text-center"
+    name="groupMembers"
+    type="email"
+    th:field="*{groupMembers}"
+    placeholder="Enter email of friend"
+    required
+    />
+  </div>
+`;
+addedEmails.appendChild(card);
+}

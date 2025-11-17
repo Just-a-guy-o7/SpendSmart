@@ -25,13 +25,13 @@
             class="nav-tab active"
             onclick="showTab('expenses')"
           >
-            Expenses
+            Add Group
           </button>
           <button id="tab2" class="nav-tab" onclick="showTab('analytics')">
-            Analytics
+            Manage Group
           </button>
           <button id="tab3" class="nav-tab" onclick="showTab('splitwise')">
-            Splitwise
+            Add expense
           </button>
         </div>
       </div>
@@ -40,10 +40,9 @@
     <div id="content">
       <div class="grid grid-cols-12 pt-22 mt-5">
         <div class="col-span-2">
-
           <aside
             id="logo-sidebar"
-            class="fixed top-0 left-0 z-40 w-64 h-full border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700  pt-22 transition-transform -translate-x-full sm:translate-x-0"
+            class="fixed top-0 left-0 z-40 w-64 h-full border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 pt-22 transition-transform -translate-x-full sm:translate-x-0"
             aria-label="Sidebar"
           >
             <div
@@ -52,65 +51,57 @@
               <ul class="space-y-2 font-medium">
                 <li>
                   <a
-                    href="#"
+                    href="/user/dashboard"
                     class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group"
                   >
-                    <svg
-                      class="w-5 h-5 transition duration-75 group-hover:text-fg-brand"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z"
-                      />
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z"
-                      />
-                    </svg>
+                    <img
+                      src="/images/dashboard.png"
+                      class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand"
+                      alt="Flowbite Logo"
+                    />
                     <span class="ms-3">Dashboard</span>
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/user/group"
                     class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group"
                   >
-                  <img src="/images/groups.png" class="shrink-0  w-5 h-5  transition duration-75 group-hover:text-fg-brand" alt="Flowbite Logo" />
-                  <span class="flex-1 ms-3 whitespace-nowrap">Group</span>
-                  
-                </a>
+                    <img
+                      src="/images/groups.png"
+                      class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand"
+                      alt="Flowbite Logo"
+                    />
+                    <span class="flex-1 ms-3 whitespace-nowrap">Group</span>
+                  </a>
                 </li>
-               
+
                 <li>
                   <a
-                    href="#"
+                    href="/user/profile"
                     class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group"
                   >
-                    
-                    <img src="/images/profile.png" class="shrink-0  w-5 h-5  transition duration-75 group-hover:text-fg-brand" alt="Flowbite Logo" />
+                    <img
+                      src="/images/profile.png"
+                      class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand"
+                      alt="Flowbite Logo"
+                    />
                     <span class="flex-1 ms-3 whitespace-nowrap">Profile</span>
                   </a>
                 </li>
                 <li>
                   <a
-                  href="#"
-                  class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group"
+                    href="/user/analysis"
+                    class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group"
                   >
-                  
-                    <img src="/images/analysis.png" class="shrink-0  w-5 h-5  transition duration-75 group-hover:text-fg-brand" alt="Flowbite Logo" />
-                    <span class="flex-1 ms-3 whitespace-nowrap"> Analysis </span>
+                    <img
+                      src="/images/analysis.png"
+                      class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand"
+                      alt="Flowbite Logo"
+                    />
+                    <span class="flex-1 ms-3 whitespace-nowrap">
+                      Analysis
+                    </span>
                   </a>
                 </li>
               </ul>
@@ -120,97 +111,49 @@
         <div class="container col-span-10 ml-5 mr-5">
           <!-- Dashboard -->
           <div id="dashboard">
-            <!-- <div class="dashboard-header">
-              <h1>Expense Tracker</h1>
-              <p>
-                Welcome back,
-                <span id="userName" data-th-text="${username}"></span>
-              </p>
-              <button><a data-th-href="@{'/do-logout'}">logout</a></button>
-            </div> -->
-
             <!-- Expenses Tab -->
             <div id="expensesTab" class="tab-content active">
-              <div class="stats-grid">
-                <div class="stat-card">
-                  <h3>Total Expenses</h3>
-                  <div class="amount">₹<span id="totalExpenses">0</span></div>
-                </div>
-                <div
-                  class="stat-card"
-                  style="
-                    background: linear-gradient(
-                      135deg,
-                      #f093fb 0%,
-                      #f5576c 100%
-                    );
-                  "
-                >
-                  <h3>This Month</h3>
-                  <div class="amount">₹<span id="monthExpenses">0</span></div>
-                </div>
-                <div
-                  class="stat-card"
-                  style="
-                    background: linear-gradient(
-                      135deg,
-                      #4facfe 0%,
-                      #00f2fe 100%
-                    );
-                  "
-                >
-                  <h3>This Week</h3>
-                  <div class="amount">₹<span id="weekExpenses">0</span></div>
-                </div>
-              </div>
-
-              <div class="expense-form">
+              <div class="addGroup-form">
                 <h3 style="margin-bottom: 20px; color: #333">Add New Group</h3>
-                <form id="expenseForm">
+
+                <form
+                  id="addGroup"
+                  data-th-action="@{'/user/addGroup'}"
+                  data-th-object="${groupForm}"
+                  method="post"
+                >
                   <div class="form-row">
                     <div class="form-group">
                       <label>Group Name</label>
-                      <input type="text" id="expenseDesc" required />
+                      <input type="text" th:field="*{name}" />
                     </div>
                     <div class="form-group">
                       <label>Description</label>
-                      <input
-                        type="text"
-                        id="expenseAmount"
-                        min="0.01"
-                        step="0.01"
-                        required
-                      />
+                      <input type="text" th:field="*{description}" />
                     </div>
                   </div>
                   <div class="form-row">
-                    <div class="form-group">
-                      <label>add member</label>
-                      <input type="email" name="email" id="emailToAdd" />
-                      <!-- <select id="expenseCategory" required>
-                    <option value="">Select Category</option>
-                    <option value="Food">Food & Dining</option>
-                    <option value="Transport">Transportation</option>
-                    <option value="Shopping">Shopping</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Bills">Bills & Utilities</option>
-                    <option value="Health">Healthcare</option>
-                    <option value="Education">Education</option>
-                    <option value="Other">Other</option>
-                  </select> -->
-                    </div>
-                    <div class="form-group">
-                      <label>Added members:</label>
-                    </div>
+                    <label class="w-full text-center">add member</label>
                   </div>
-                  <div class="form-row">
-                    <div class="form-group"></div>
-                    <div class="form-group">
-                      <button type="addMember" class="btn">Add Member</button>
-                    </div>
-                    <div class="form-group"></div>
+                  <div id="addedEmails"></div>
+
+                  <div class="flex justify-center w-full">
+                    <button
+                      class="flex btn"
+                      type="button"
+                      onclick="addMember()"
+                    >
+                      +
+                    </button>
                   </div>
-                  <button type="submit" class="btn">Make Group</button>
+                  <input
+                  id="hiffen"
+                    th:field="*{groupMembers}"
+                    hidden
+                  />
+                  <button type="submit" class="btn mt-4 w-full">
+                    Make Group
+                  </button>
                 </form>
               </div>
 
@@ -282,7 +225,7 @@
     </div>
 
     <div id="footer">
-      <div  data-th-replace="~{userLoggedInFooter::userLoggedInFooter}"></div>
+      <div data-th-replace="~{userLoggedInFooter::userLoggedInFooter}"></div>
     </div>
   </body>
   <script id="script" src="/script/script.js"></script>

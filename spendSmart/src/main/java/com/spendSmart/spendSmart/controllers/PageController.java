@@ -46,9 +46,6 @@ public class PageController {
         if(rBindingResult.hasErrors()){
             return "signUpPage";
         }
-        
-        System.out.println(userForm);
-
 
         User userToSave=User.builder()
         .name(userForm.getFullName())
