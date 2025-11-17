@@ -9,6 +9,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -29,6 +33,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity(name="User")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userId")
 @Table(name="Users")
 @Getter
 @Setter
@@ -93,6 +98,7 @@ public class User implements UserDetails{
         joinColumns=@JoinColumn(name="user_id")  ,
         inverseJoinColumns = @JoinColumn(name="groupId")  
     )
+
     private List<Groups> Groups=new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)

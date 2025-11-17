@@ -16,7 +16,7 @@ import com.spendSmart.spendSmart.entities.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import spendSmart.spendSmart.helpers.AppConstants;
+import com.spendSmart.spendSmart.helpers.AppConstants;
 import com.spendSmart.spendSmart.repositories.userRepo;
 
 public class oAuthAuthenticationSuccesshandler implements AuthenticationSuccessHandler{

@@ -3,6 +3,9 @@ package com.spendSmart.spendSmart.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -19,6 +22,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity(name="groupsUsers")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "groupId")
 @Table(name="groupsUsers")
 @Getter
 @Setter
@@ -28,7 +32,7 @@ import lombok.Setter;
 public class Groups {
 
     @Id
-    @Column(name = "groupId")
+    @Column(name = "group_Id")
     private String groupId;
     
     @Column(name = "description")
@@ -38,6 +42,7 @@ public class Groups {
     private String groupName;
 
     @ManyToMany(mappedBy = "Groups")
+
     private List<User> GroupMembers=new ArrayList<>();
     
     @OneToMany(mappedBy = "PartOfGroup",cascade = CascadeType.ALL,fetch = FetchType.LAZY)

@@ -1,4 +1,4 @@
-package spendSmart.spendSmart.helpers;
+package com.spendSmart.spendSmart.helpers;
 
 public class resourceNotFoundException extends RuntimeException{
 

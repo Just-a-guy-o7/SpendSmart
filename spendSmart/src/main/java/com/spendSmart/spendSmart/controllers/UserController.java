@@ -19,7 +19,7 @@ import com.spendSmart.spendSmart.repositories.UserService;
 
 
 import jakarta.validation.Valid;
-import spendSmart.spendSmart.helpers.Helper;
+import com.spendSmart.spendSmart.helpers.Helper;
 
 
 
@@ -31,15 +31,15 @@ public class UserController {
     private UserService userService;
     @Autowired
     private GroupService groupService;
+    @Autowired
+    private Helper helper;
 
     @ModelAttribute
     public void addLoggedInUserInformation(Model model,Authentication authentication){
-        Helper helper=new Helper();
         
-        String email=helper.loggedInUser(authentication);
         
-        User currentUser= userService.getUserByEmail(email).orElse(null);
-
+        User currentUser= helper.loggedInUser();
+        
         model.addAttribute("username", currentUser.getName().toString());
     }
 
@@ -58,12 +58,8 @@ public class UserController {
 
     @RequestMapping(value="/addGroup",method =RequestMethod.POST)
     public String registerUser(@Valid @ModelAttribute GroupForm  groupForm,Authentication authentication) {
-        Helper helper=new Helper();
         
-        String email=helper.loggedInUser(authentication);
-        
-        User currentUser= userService.getUserByEmail(email).orElse(null);
-
+        User currentUser=helper.loggedInUser();
         groupForm.groupMembers.add(currentUser.getEmail());
 
 

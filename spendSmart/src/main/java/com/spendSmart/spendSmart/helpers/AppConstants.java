@@ -1,4 +1,4 @@
-package spendSmart.spendSmart.helpers;
+package com.spendSmart.spendSmart.helpers;
 
 public class AppConstants {
     public static final String APP_NAME="Smart Contact Manager";

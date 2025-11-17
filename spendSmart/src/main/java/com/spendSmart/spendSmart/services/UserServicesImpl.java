@@ -1,5 +1,6 @@
 package com.spendSmart.spendSmart.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,8 +13,8 @@ import com.spendSmart.spendSmart.repositories.UserService;
 import com.spendSmart.spendSmart.repositories.userRepo;
 import com.spendSmart.spendSmart.config.SecurityConfig;
 
-import spendSmart.spendSmart.helpers.AppConstants;
-import spendSmart.spendSmart.helpers.resourceNotFoundException;
+import com.spendSmart.spendSmart.helpers.AppConstants;
+import com.spendSmart.spendSmart.helpers.resourceNotFoundException;
 
 @Service
 public class UserServicesImpl implements UserService{
@@ -79,6 +80,11 @@ public class UserServicesImpl implements UserService{
     @Override
     public Optional<User> getUserByEmail(String email) {
         return userRepo.findByEmail(email);
+    }
+
+    @Override
+    public ArrayList<String> getGroupIdByUserId(String userId) {
+        return userRepo.getGroupIdFromUserId(userId);
     }
 
 }

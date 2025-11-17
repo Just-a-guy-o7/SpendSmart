@@ -1,5 +1,6 @@
 package com.spendSmart.spendSmart.repositories;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import com.spendSmart.spendSmart.entities.User;
@@ -19,4 +20,6 @@ public interface UserService {
     boolean isUserExistByEmail(String email);
 
     Optional<User> getUserByEmail(String email);
+
+    ArrayList<String> getGroupIdByUserId(String userId);
 }

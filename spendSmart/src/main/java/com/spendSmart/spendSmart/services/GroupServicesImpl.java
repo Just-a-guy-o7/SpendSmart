@@ -11,7 +11,7 @@ import com.spendSmart.spendSmart.entities.User;
 import com.spendSmart.spendSmart.repositories.GroupRepo;
 import com.spendSmart.spendSmart.repositories.GroupService;
 
-import spendSmart.spendSmart.helpers.resourceNotFoundException;
+import com.spendSmart.spendSmart.helpers.resourceNotFoundException;
 
 @Service
 public class GroupServicesImpl implements GroupService {
@@ -21,7 +21,6 @@ public class GroupServicesImpl implements GroupService {
 
     @Override
     public Groups saveGroup(Groups groups) {
-        // TODO Auto-generated method stub
         String groupID = UUID.randomUUID().toString();
         groups.setGroupId(groupID);
         Groups savedgrp=groupRepo.save(groups);

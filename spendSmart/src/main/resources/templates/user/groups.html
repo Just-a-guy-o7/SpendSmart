@@ -23,11 +23,11 @@
           <button
             id="tab1"
             class="nav-tab active"
-            onclick="showTab('expenses')"
+            onclick="showTab('addGroup')"
           >
             Add Group
           </button>
-          <button id="tab2" class="nav-tab" onclick="showTab('analytics')">
+          <button id="tab2" class="nav-tab" onclick="showTab('showGroup')">
             Manage Group
           </button>
           <button id="tab3" class="nav-tab" onclick="showTab('splitwise')">
@@ -112,7 +112,7 @@
           <!-- Dashboard -->
           <div id="dashboard">
             <!-- Expenses Tab -->
-            <div id="expensesTab" class="tab-content active">
+            <div id="addGroupTab" class="tab-content active">
               <div class="addGroup-form">
                 <h3 style="margin-bottom: 20px; color: #333">Add New Group</h3>
 
@@ -135,7 +135,9 @@
                   <div class="form-row">
                     <label class="w-full text-center">add member</label>
                   </div>
-                  <div id="addedEmails"></div>
+                  <div id="addedEmails">
+                    
+                  </div>
 
                   <div class="flex justify-center w-full">
                     <button
@@ -146,11 +148,7 @@
                       +
                     </button>
                   </div>
-                  <input
-                  id="hiffen"
-                    th:field="*{groupMembers}"
-                    hidden
-                  />
+                  <input id="hiffen" th:field="*{groupMembers}" hidden />
                   <button type="submit" class="btn mt-4 w-full">
                     Make Group
                   </button>
@@ -162,15 +160,9 @@
             </div>
 
             <!-- Analytics Tab -->
-            <div id="analyticsTab" class="tab-content">
-              <div class="chart-container">
-                <h3>Expenses by Category</h3>
-                <canvas id="categoryChart"></canvas>
-              </div>
-              <div class="chart-container">
-                <h3>Monthly Trend</h3>
-                <canvas id="trendChart"></canvas>
-              </div>
+            <div id="showGroupTab" class="tab-content">
+              
+              <div id="usersGroups"></div>
             </div>
 
             <!-- Splitwise Tab -->

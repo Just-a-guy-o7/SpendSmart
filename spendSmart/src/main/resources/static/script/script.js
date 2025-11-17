@@ -66,6 +66,11 @@ function showTab(tab) {
   if (tab === "analytics") updateCharts();
   if (tab === "challenges") renderChallenges();
   if (tab === "split") updateBalances();
+  if (tab === "showGroup") showGroups();
+}
+
+function showGroups(){
+  
 }
 
 function updateCharts() {
@@ -223,7 +228,7 @@ function renderChallenges() {
     const card = document.createElement("div");
     card.className = "challenge-card";
     card.innerHTML = `
-                    <div class="challenge-header">
+                    <div class="challenge-header" "> 
                         <div class="challenge-title">${
                           challenge.icon || "🎯"
                         } ${challenge.title}</div>
@@ -258,32 +263,52 @@ function renderChallenges() {
 }
 
 function addMember() {
-  const inputs = document.getElementsByName('groupMembers');
-let hasEmpty = false;
-Array.from(inputs).forEach(input => {
-  if(input.value.trim().length === 0 && input.id!="hiffen") {
-    hasEmpty = true;
+  const inputs = document.getElementsByName("groupMembers");
+  let hasEmpty = false;
+  Array.from(inputs).forEach((input) => {
+    if (input.value.trim().length === 0 && input.id != "hiffen") {
+      hasEmpty = true;
+    }
+  });
+
+  if (hasEmpty) {
+    return;
   }
-});
-
-if(hasEmpty) {
-  return;
-}
-
-const addedEmails = document.getElementById("addedEmails");
-const card = document.createElement("div");
-card.className = "email";
-card.innerHTML = `
-  <div class="form-group" >
+  const id=Math.floor((Math.random())*100000);
+  console.log(id);
+  const addedEmails = document.getElementById("addedEmails");
+  const card = document.createElement("div");
+  card.className = "email";
+  card.innerHTML = `
+  <div
+    class="form-group flex h-10"
+    id="input-holding-div-number-${id}"
+    >
     <input
-    class="text-center"
+    class="text-center grow"
     name="groupMembers"
     type="email"
     th:field="*{groupMembers}"
     placeholder="Enter email of friend"
     required
     />
+    <div class="flex h-10 mb-0.5 ml-2">
+    <button
+      type="button"
+      id="${id}"
+      onclick="removeMember(this.id)"
+      href="/do-logout"
+      class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 mr-3 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+    >
+      X
+    </button>
+    </div>
   </div>
 `;
-addedEmails.appendChild(card);
+  addedEmails.appendChild(card);
+}
+function removeMember(id){
+  const element = document.getElementById('input-holding-div-number-'+id);
+  console.log(element);
+  element.remove(); 
 }
